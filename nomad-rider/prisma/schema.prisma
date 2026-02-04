@@ -15,9 +15,7 @@ datasource db {
 model Spot {
   id          String   @id @default(cuid())
   name        String
-  description String
+  location    String
   wifiSpeed   Int      // In Mbps
-  hasPower    Boolean  @default(false)
-  imageUrl    String?
   createdAt   DateTime @default(now())
 }
