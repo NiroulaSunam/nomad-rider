@@ -15,7 +15,7 @@ export default function Navbar() {
           <Link href="/find-spots" className="text-slate-300 hover:text-white transition">
             Find Spots
           </Link>
-          <Link href="/add-location" className="text-slate-300 hover:text-white transition">
+          <Link href="/add-spot" className="text-slate-300 hover:text-white transition">
             Add Location
           </Link>
           <Link 

@@ -17,5 +17,6 @@ model Spot {
   name        String
   location    String
   wifiSpeed   Int      // In Mbps
+  imageUrl    String?
   createdAt   DateTime @default(now())
 }
