@@ -1,11 +1,18 @@
+import { db } from '@/lib/db';
 import Hero from '@/components/Hero'; 
 import Navbar from '@/components/Navbar';
 import { Spotcard } from '@/components/Spotcard';
-import { getAllSpots } from '@/lib/services/spots'; // Import the service of spots
+
 
 export default async function Home() {
   // Fetch the data from the 'Librarian'
-  const spots = await getAllSpots();
+  // to fetch all spots: const spots = await getAllSpots(); (import getAllSpots)
+  const recentSpots = await db.spot.findMany({
+    orderBy: {
+      createdAt: 'desc', // Get the newest spots first
+    },
+    take: 3, 
+  });
 
   return (
     <div>
@@ -16,7 +23,7 @@ export default async function Home() {
         
         {/* Loop through the spots and create a card for each one */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {spots.map((spot) => (
+          {recentSpots.map((spot) => (
             <Spotcard key={spot.id} spot={spot} />
           ))}
         </div>
