@@ -1,6 +1,5 @@
 import { db } from '@/lib/db';
 import Hero from '@/components/Hero'; 
-import Navbar from '@/components/Navbar';
 import { Spotcard } from '@/components/Spotcard';
 
 
@@ -16,7 +15,6 @@ export default async function Home() {
 
   return (
     <div>
-      <Navbar />
       <Hero /> 
       <section className="max-w-7xl mx-auto px-6 py-10">
         <h2 className="text-2xl font-bold mb-6">Recent Spots</h2>
