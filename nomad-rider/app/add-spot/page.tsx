@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { createSpot } from "../actions";
 import { spotSchema } from "@/lib/validations/spot";
-import { z } from "zod";
 
 export default function AddSpotPage() {
   const [formData, setFormData] = useState({

@@ -1,4 +1,18 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation"; // Import the router
+
 export default function Hero() {
+  const [query, setQuery] = useState(""); // State to hold search text
+  const router = useRouter();
+
+  const handleSearch = () => {
+    if (!query.trim()) return; //Dont search if empty
+    // send user to /find-spots with the query in the URL
+    router.push(`/find-spots?q=${encodeURIComponent(query)}`);
+  };
+
   return (
     <section className="min-h-[70vh] bg-slate-950 text-white flex flex-col justify-center p-8">
       {/*(min-h) Making it available for mobile as well as laptop */}
@@ -22,10 +36,15 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-3 w-full">
                 <input 
                 type="text" 
+                value={query} //Binds the value to the query for search
+                onChange={(e) => setQuery(e.target.value)} // Updates the state
+                onKeyDown={(e) => e.key === 'Enter' && handleSearch()} // Search on Enter key 
                 placeholder="Search by city, route..." 
                 className="grow px-6 py-4 bg-slate-900 border border-slate-800 rounded-2xl text-white focus:ring-2 focus:ring-blue-500 outline-none"
                 />
-                <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold transition">
+                <button 
+                onClick={handleSearch} //Click to Search
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold transition">
                 Search
                 </button>
             </div>
