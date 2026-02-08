@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation"; // Import the router
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 
 export default function Hero() {
   const [query, setQuery] = useState(""); // State to hold search text
@@ -34,7 +36,7 @@ export default function Hero() {
   
              {/* The Bar: Input + Button */}
             <div className="flex flex-col sm:flex-row gap-3 w-full">
-                <input 
+                <Input 
                 type="text" 
                 value={query} //Binds the value to the query for search
                 onChange={(e) => setQuery(e.target.value)} // Updates the state
@@ -42,11 +44,11 @@ export default function Hero() {
                 placeholder="Search by city, route..." 
                 className="grow px-6 py-4 bg-slate-900 border border-slate-800 rounded-2xl text-white focus:ring-2 focus:ring-blue-500 outline-none"
                 />
-                <button 
+                <Button 
                 onClick={handleSearch} //Click to Search
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold transition">
                 Search
-                </button>
+                </Button>
             </div>
 
             

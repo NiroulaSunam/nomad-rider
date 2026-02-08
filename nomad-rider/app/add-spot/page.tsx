@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { createSpot } from "../actions";
 import { spotSchema } from "@/lib/validations/spot";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 export default function AddSpotPage() {
   const [formData, setFormData] = useState({
@@ -59,7 +61,7 @@ export default function AddSpotPage() {
       >
         <div className="mb-4">
           <label className="block text-sm font-medium mb-2 text-slate-400">Name of Spot</label>
-          <input
+          <Input
             type="text"
             value={formData.name}
             placeholder="e.g. The Biker's Hub"
@@ -72,7 +74,7 @@ export default function AddSpotPage() {
 
         <div className="mb-4">
           <label className="block text-sm font-medium mb-2 text-slate-400">Location</label>
-          <input
+          <Input
             type="text"
             value={formData.location}
             placeholder="e.g. Kathmandu, Nepal"
@@ -84,7 +86,7 @@ export default function AddSpotPage() {
 
         <div className="mb-4">
           <label className="block text-sm font-medium mb-2 text-slate-400">Wi-Fi Speed (Mbps)</label>
-          <input
+          <Input
             type="number"
             value={formData.wifiSpeed}
             placeholder="e.g. 50"
@@ -96,7 +98,7 @@ export default function AddSpotPage() {
 
         <div className="mb-8">
           <label className="block text-sm font-medium mb-2 text-slate-400">Image URL</label>
-          <input
+          <Input
             type="text"
             value={formData.imageUrl}
             placeholder="https://images.unsplash.com/..."
@@ -106,13 +108,13 @@ export default function AddSpotPage() {
           {formErrors.imageUrl && <p className="text-red-400 text-xs mt-1">{formErrors.imageUrl}</p>}
         </div>
 
-        <button
+        <Button
           type="submit"
           // Using the same blue-600/700 as your Navbar Login button
           className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-full transition duration-300 shadow-lg active:scale-95"
         >
           Save Location
-        </button>
+        </Button>
       </form>
     </div>
   );

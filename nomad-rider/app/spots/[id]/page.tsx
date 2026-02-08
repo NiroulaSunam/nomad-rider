@@ -2,6 +2,8 @@ import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft } from "lucide-react"; // for what?
 
 export default async function SpotDetailsPage({
   params,
@@ -33,10 +35,10 @@ export default async function SpotDetailsPage({
       <div className="max-w-4xl mx-auto">
         {/* Back Button */}
         <Link 
-          href="/find-spots" 
-          className="text-slate-400 hover:text-blue-500 mb-8 inline-block transition"
-        >
-          ← Back to all spots
+          href="/find-spots"> 
+          <Button variant="ghost" className="mb-4 text-slate-400 hover:text-white">
+          <ChevronLeft className="mr-2 h-4 w-4" /> Back to all spots
+          </Button>
         </Link>
 
         {/* Hero Section for the Spot */}

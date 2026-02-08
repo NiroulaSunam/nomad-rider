@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Spotcard } from "@/components/Spotcard"; // Now we will use this
 import { Spot } from "@prisma/client";
+import { Input } from "@/components/ui/input" 
 
 export default function SearchResults({ 
   initialSpots = [], 
@@ -21,7 +22,7 @@ export default function SearchResults({
 
   return (
     <div>
-      <input 
+      <Input 
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
