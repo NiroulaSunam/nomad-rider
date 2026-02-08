@@ -14,8 +14,13 @@ declare global {
   var prisma: undefined | ReturnType<typeof prismaClientSingleton>;
 }
 
+// This creates the instance
 const prisma = globalThis.prisma ?? prismaClientSingleton();
 
+// 1. Named Export (This fixes the "{ db }" error)
+export const db = prisma;
+
+// 2. Default Export (Keeping this for compatibility)
 export default prisma;
 
 if (process.env.NODE_ENV !== 'production') globalThis.prisma = prisma;
