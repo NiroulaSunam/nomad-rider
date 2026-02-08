@@ -5,13 +5,14 @@ import SearchResults from "./SearchResults";
 export default async function FindSpotsPage({
   searchParams,
 }: {
-  searchParams: { q?: string };
+  searchParams:Promise<{ q?: string }>;
 }) {
+  const params = await searchParams;
+  const initialQuery = params.q || "";
+
   const allSpots = await db.spot.findMany({
     orderBy: { createdAt: 'desc' }
   });
-
-  const initialQuery = searchParams.q || ""; // This was "unused"
 
   return (
     <main className="min-h-screen bg-slate-950 text-white p-8">
