@@ -1,4 +1,6 @@
+import { SignedOut, SignInButton, UserButton, SignedIn } from '@clerk/nextjs';
 import Link from 'next/link';
+import { Button } from './ui/button';
 
 export default function Navbar() {
   return (
@@ -18,12 +20,26 @@ export default function Navbar() {
           <Link href="/add-spot" className="text-slate-300 hover:text-white transition">
             Add Location
           </Link>
-          <Link 
-            href="/login" 
-            className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-full text-sm font-medium transition"
-          >
-            Login
-          </Link>
+          
+          {/* Auth logic start for login */}
+          <SignedOut>
+            <SignInButton mode="modal">
+              <Button className='bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-full text-sm font-medium transition'>
+                Login
+              </Button>
+            </SignInButton>
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton
+              afterSignOutUrl="/"
+              appearance={{
+                elements: {
+                  avatarBox: "h-9 w-9"
+                }
+              }}
+              />
+          </SignedIn>
         </div>
 
         {/* MOBILE MENU ICON (Just a placeholder for now) */}
