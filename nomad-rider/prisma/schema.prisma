@@ -18,5 +18,6 @@ model Spot {
   location    String
   wifiSpeed   Int      // In Mbps
   imageUrl    String?
+  userId      String // Clerk ID 
   createdAt   DateTime @default(now())
 }

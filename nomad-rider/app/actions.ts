@@ -2,6 +2,7 @@
 
 import prisma from "@/lib/db";
 import { revalidatePath } from "next/cache";
+import { auth } from "@clerk/nextjs/server";
 
 export async function createSpot(data: { 
   name: string; 
@@ -10,6 +11,14 @@ export async function createSpot(data: {
   imageUrl?: string 
 }) {
   try {
+    // get userid from clerk. 
+    const { userId } = await auth();
+
+    // security check: if not logged in, userid will be null
+    if (!userId) {
+      return {success: false, error: "Authentication required."};
+    }
+
     const newSpot = await prisma.spot.create({
       data: {
         name: data.name,
