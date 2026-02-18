@@ -8,7 +8,7 @@ export async function createSpot(data: {
   name: string; 
   location: string; 
   wifiSpeed: number; 
-  imageUrl?: string 
+  imageUrl?: string ;
 }) {
   try {
     // get userid from clerk. 
@@ -25,6 +25,7 @@ export async function createSpot(data: {
         location: data.location,
         wifiSpeed: data.wifiSpeed,
         imageUrl: data.imageUrl || "https://images.unsplash.com/photo-1497366216548-37526070297c",
+        userId: userId,
       },
     });
 
