@@ -14,11 +14,9 @@ export default function Navbar() {
 
         {/* LINKS AREA */}
         <div className="hidden md:flex items-center space-x-8">
+
           <Link href="/find-spots" className="text-slate-300 hover:text-white transition">
             Find Spots
-          </Link>
-          <Link href="/add-spot" className="text-slate-300 hover:text-white transition">
-            Add Location
           </Link>
           
           {/* Auth logic start for login */}
@@ -31,8 +29,11 @@ export default function Navbar() {
           </SignedOut>
 
           <SignedIn>
+             <Link href="/add-spot" className="text-slate-300 hover:text-white transition">
+            Add Location
+            </Link>
+            
             <UserButton
-              afterSignOutUrl="/"
               appearance={{
                 elements: {
                   avatarBox: "h-9 w-9"

@@ -10,7 +10,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.37.3",
+    "@clerk/nextjs": "^6.38.0",
     "@prisma/adapter-pg": "^7.3.0",
     "@prisma/client": "^7.3.0",
     "class-variance-authority": "^0.7.1",
