@@ -16,7 +16,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-[70vh] bg-slate-950 text-white flex flex-col justify-center p-8">
+    <section className="min-h-[60vh] bg-slate-950 text-white flex flex-col justify-center p-8">
       {/*(min-h) Making it available for mobile as well as laptop */}
       {/* Max-w and mx-auto keep content centered and readable */}
       <div className="max-w-3xl mx-auto space-y-6">
@@ -50,18 +50,7 @@ export default function Hero() {
                 Search
                 </Button>
             </div>
-
-            
-            <div className="flex flex-wrap justify-center sm:justify-start gap-4 text-sm text-slate-500">
-                <span className="font-semibold text-slate-400">Popular:</span>
-                <button className="hover:text-blue-400 transition underline decoration-slate-700">Coastal Route</button>
-                <button className="hover:text-blue-400 transition underline decoration-slate-700">Mountain Pass</button>
-                <button className="hover:text-blue-400 transition underline decoration-slate-700">Starlink Zones</button>
-            </div>
-  
         </div>
-       
-
       </div>
     </section>
   );

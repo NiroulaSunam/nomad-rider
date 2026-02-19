@@ -1,53 +1,58 @@
 import { SignedOut, SignInButton, UserButton, SignedIn } from '@clerk/nextjs';
 import Link from 'next/link';
-import { Button } from './ui/button';
+import { Button } from '@/components/ui/button';
 
 export default function Navbar() {
   return (
-    <nav className="bg-slate-950 border-b border-slate-800 text-white px-6 py-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+    <nav className="w-full bg-slate-950 border-b border-slate-800 h-20 sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
         
-        {/* LOGO AREA */}
-        <Link href="/" className="text-xl font-bold tracking-tight">
-          Nomad<span className="text-blue-500">Rider</span>
+        {/* Brand/Logo - Increased text size */}
+        <Link href="/" className="hover:opacity-80 transition-opacity">
+          <span className="text-2xl font-extrabold text-white tracking-tight">
+            Nomad<span className="text-blue-500">Rider</span>
+          </span>
         </Link>
 
-        {/* LINKS AREA */}
-        <div className="hidden md:flex items-center space-x-8">
-
-          <Link href="/find-spots" className="text-slate-300 hover:text-white transition">
+        {/* Navigation Group */}
+        <div className="flex items-center gap-8">
+          <Link 
+            href="/find-spots" 
+            className="text-base font-semibold text-slate-300 hover:text-white transition-colors"
+          >
             Find Spots
           </Link>
-          
-          {/* Auth logic start for login */}
-          <SignedOut>
-            <SignInButton mode="modal">
-              <Button className='bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-full text-sm font-medium transition'>
-                Login
-              </Button>
-            </SignInButton>
-          </SignedOut>
 
           <SignedIn>
-             <Link href="/add-spot" className="text-slate-300 hover:text-white transition">
-            Add Location
+            <Link 
+              href="/add-spot" 
+              className="text-base font-semibold text-slate-300 hover:text-white transition-colors"
+            >
+              Add Location
             </Link>
-            
-            <UserButton
-              appearance={{
-                elements: {
-                  avatarBox: "h-9 w-9"
-                }
-              }}
-              />
           </SignedIn>
-        </div>
 
-        {/* MOBILE MENU ICON (Just a placeholder for now) */}
-        <div className="md:hidden text-slate-300">
-          <button>☰</button>
-        </div>
+          {/* Auth/Profile Section */}
+          <div className="flex items-center gap-6 ml-2 pl-6 border-l border-slate-800 h-10">
+            <SignedOut>
+              <SignInButton mode="modal">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 font-bold h-8">
+                  Login
+                </Button>
+              </SignInButton>
+            </SignedOut>
 
+            <SignedIn>
+              <UserButton 
+                appearance={{
+                  elements: {
+                    userButtonAvatarBox: "w-10 h-10", // Bigger profile pic
+                  }
+                }}
+              />
+            </SignedIn>
+          </div>
+        </div>
       </div>
     </nav>
   );

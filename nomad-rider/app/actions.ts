@@ -24,7 +24,7 @@ export async function createSpot(data: {
         name: data.name,
         location: data.location,
         wifiSpeed: data.wifiSpeed,
-        imageUrl: data.imageUrl || "https://images.unsplash.com/photo-1497366216548-37526070297c",
+        imageUrl: data.imageUrl,
         userId: userId,
       },
     });

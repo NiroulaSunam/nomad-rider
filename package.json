@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@clerk/nextjs": "^6.37.3",
-    "dotenv": "^17.2.3"
-  }
-}

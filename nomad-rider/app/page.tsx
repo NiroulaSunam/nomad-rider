@@ -16,8 +16,8 @@ export default async function Home() {
   return (
     <div>
       <Hero /> 
-      <section className="max-w-7xl mx-auto px-6 py-10">
-        <h2 className="text-2xl font-bold mb-6">Recent Spots</h2>
+      <section className="max-w-7xl mx-auto px-6 py-2">
+        <h2 className="text-2xl font-bold mb-6 text-white">Recent Spots</h2>
         
         {/* Loop through the spots and create a card for each one */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

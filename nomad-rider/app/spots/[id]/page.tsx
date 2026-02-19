@@ -1,59 +1,41 @@
 import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+import NextImage from "next/image"; // Renamed to avoid Lucide conflict
 import { Button } from "@/components/ui/button";
-import { ChevronLeft } from "lucide-react"; // for what?
+import { ChevronLeft, Wifi } from "lucide-react";
 
-export default async function SpotDetailsPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  // Unwrapping the ID from the URL 
+export default async function SpotDetailsPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  const spot = await db.spot.findUnique({ where: { id: id } });
 
-  // Fetching ONLY this specific spot from the Database
-  const spot = await db.spot.findUnique({
-    where: { id: id },
-  });
+  if (!spot) notFound();
 
-  // If the ID doesn't exist, show the 404 page
-  if (!spot) {
-    notFound();
-  }
-
-  // fallback logic to get back to the image if there are no working image link 
-  const fallbackImage = "https://images.unsplash.com/photo-1497366216548-37526070297c";
-
-  // check if its a real Unsplash URL
-  const isTrusted = spot.imageUrl?.includes("images.unsplash.com");
-  const finalImage = isTrusted && spot.imageUrl ? spot.imageUrl : fallbackImage;
+  // CLEANED: Removed Unsplash fallback logic. 
+  // We use the DB URL, or a placeholder if the DB is empty.
+  const finalImage = spot.imageUrl || "/placeholder-spot.jpg";
 
   return (
     <main className="min-h-screen bg-slate-950 text-white p-8">
       <div className="max-w-4xl mx-auto">
-        {/* Back Button */}
-        <Link 
-          href="/find-spots"> 
+        <Link href="/find-spots"> 
           <Button variant="ghost" className="mb-4 text-slate-400 hover:text-white">
-          <ChevronLeft className="mr-2 h-4 w-4" /> Back to all spots
+            <ChevronLeft className="mr-2 h-4 w-4" /> Back to all spots
           </Button>
         </Link>
 
-        {/* Hero Section for the Spot */}
-        <div className="relative w-full h-75 md:h-112.5 rounded-3xl overflow-hidden border border-slate-800 mb-8">
-          <div>
-            <Image 
+        {/* HERO SECTION */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <div className="relative w-full aspect-video lg:aspect-square rounded-3xl overflow-hidden border border-slate-800 shadow-2xl">
+            <NextImage 
               src={finalImage} 
               alt={spot.name}
-              fill // Tells it to fill the blue container above
-              className="rounded-3xl w-full aspect-video object-cover border border-slate-800 shadow-2xl"
-              priority // makes the image the main priority so it starts downlading the very instant the user clicks the link
+              fill
+              className="object-cover"
+              priority 
             />
           </div>
 
-            {/* Text Content */}
           <div className="flex flex-col justify-center">
             <h1 className="text-4xl font-bold mb-4">{spot.name}</h1>
             <p className="text-xl text-slate-400 mb-6 flex items-center gap-2">
@@ -63,22 +45,15 @@ export default async function SpotDetailsPage({
             <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800">
               <div className="flex justify-between items-center mb-4">
                 <span className="text-slate-400 font-medium">Verified Wi-Fi</span>
-                <span className="text-green-400 font-bold text-2xl">{spot.wifiSpeed} Mbps</span>
+                <span className="text-green-400 font-bold text-2xl flex items-center gap-2">
+                   <Wifi className="h-6 w-6" /> {spot.wifiSpeed} Mbps
+                </span>
               </div>
-              <button className="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-bold transition">
+              <button className="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-bold transition active:scale-95">
                 I&apos;m here! Update Speed
               </button>
             </div>
           </div>
-        </div>
-
-        {/* Room for Additional content later */}
-        <div className="mt-12 border-t border-slate-900 pt-8">
-          <h2 className="text-2xl font-semibold mb-4">About this Spot</h2>
-          <p className="text-slate-400 leading-relaxed">
-            This location has been verified by the Nomad Rider network. Perfect for remote work with power access and a bike-friendly atmosphere.
-            (More detailed descriptions coming soon!)
-          </p>
         </div>
       </div>
     </main>
