@@ -1,7 +1,11 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
 // Define which routes are public (anyone can see)
-const isPublicRoute = createRouteMatcher(['/', '/find-spots(.*)','/api/uploadthing']);
+const isPublicRoute = createRouteMatcher([
+  '/',                    // Home Page
+  '/find-spots(.*)',      // Search Page and sub-routes
+  '/spots/(.*)',          // Individual spot detail pages
+  '/api/uploadthing']);   // Required for image handling
 
 export default clerkMiddleware(async (auth, request) => {
   if (!isPublicRoute(request)) {
