@@ -48,9 +48,6 @@ export default async function SpotDetailsPage({ params }: { params: Promise<{ id
                    <Wifi className="h-6 w-6" /> {spot.wifiSpeed} Mbps
                 </span>
               </div>
-              <button className="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-bold transition active:scale-95">
-                I&apos;m here! Update Speed
-              </button>
             </div>
           </div>
         </div>
