@@ -24,6 +24,13 @@ export default function Navbar() {
           </Link>
 
           <SignedIn>
+            <Link
+              href="/my-spots"
+              className="text-base font-semibold text-slate-300 hover:text-white"
+            >
+              My Spots
+            </Link>
+            
             <Link 
               href="/add-spot" 
               className="text-base font-semibold text-slate-300 hover:text-white transition-colors"

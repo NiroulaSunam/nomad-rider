@@ -20,9 +20,6 @@ export default function AddSpotPage() {
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // 1. REMOVED the buggy useEffect. 
-  // Instead of watching state with an Effect, we'll just log inside the functions.
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);

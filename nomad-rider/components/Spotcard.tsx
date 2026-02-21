@@ -9,7 +9,7 @@ interface SpotcardProps {
 }
 
 export function Spotcard({ spot }: SpotcardProps) {
-  // Use a simple constant for the image. 
+   
   // If spot.imageUrl is null, Next.js Image will handle the error.
   const displayImage = spot.imageUrl || "";
 

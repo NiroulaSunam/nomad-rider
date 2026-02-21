@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Spotcard } from "@/components/Spotcard"; // Now we will use this
+import { Spotcard } from "@/components/Spotcard";
 import type { Spot } from "@prisma/client";
 import { Input } from "@/components/ui/input" 
 
@@ -14,7 +14,6 @@ export default function SearchResults({
 }) {
   const [query, setQuery] = useState(defaultQuery);
 
-  // This is the variable TypeScript said was "unused"
   const filtered = initialSpots.filter(spot => 
     spot.name.toLowerCase().includes(query.toLowerCase()) ||
     spot.location.toLowerCase().includes(query.toLowerCase())
@@ -30,7 +29,6 @@ export default function SearchResults({
         className="w-full max-w-md mb-8 p-4 rounded-xl bg-slate-900 border border-slate-800 text-white outline-none focus:border-blue-500"
       />
 
-      {/* WE USE 'filtered' AND 'Spotcard' HERE */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((spot) => (
           <Spotcard key={spot.id} spot={spot} />

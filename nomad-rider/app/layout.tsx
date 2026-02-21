@@ -35,13 +35,11 @@ export default function RootLayout({
     >
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950`}>
-          {/* 1. The Plugin doesn't render anything, so it won't hide the nav */}
-          <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
+         
+          <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />    
           
-          {/* 2. The Navbar MUST be inside the body to be visible */}
           <Navbar />
-          
-          {/* 3. Your page content */}
+        
           {children}
         </body>
       </html>

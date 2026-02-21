@@ -11,7 +11,6 @@ export default async function SpotDetailsPage({ params }: { params: Promise<{ id
 
   if (!spot) notFound();
 
-  // CLEANED: Removed Unsplash fallback logic. 
   // We use the DB URL, or a placeholder if the DB is empty.
   const finalImage = spot.imageUrl || "/placeholder-spot.jpg";
 
