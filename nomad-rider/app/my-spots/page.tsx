@@ -27,7 +27,7 @@ export default async function MySpotsSpage() {
             <div className="mb-10">
                 <h1 className="text-4xl font-extrabold text-white"> My Spots </h1>
                 <p className="text-slate-400 mt-2">
-                    YOu have shared {mySpots.length} locations with the community.
+                    You have shared {mySpots.length} locations with the community.
                 </p>
             </div>
 
@@ -38,7 +38,7 @@ export default async function MySpotsSpage() {
                     <p className= "text-slate-400 mb-6">You haven&apos;t shared any spots yet. </p>
                     <a
                         href="/add-spot"
-                        className="bg-blue-600 text-white pox-6 py-3 rounded-full font-bold hover:bg-blue-700 transition"
+                        className="bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition"
                     >
                         Add your first spot
                     </a>
@@ -47,7 +47,7 @@ export default async function MySpotsSpage() {
                 // Reusing existing Spotcard
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {mySpots.map((spot)=> (
-                        <Spotcard key={spot.id} spot={spot} />
+                        <Spotcard key={spot.id} spot={spot} showDelete={true} />
                     ))}
                 </div>
             )}
