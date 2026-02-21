@@ -20,3 +20,18 @@ Backend: Node.js, Prisma ORM
 Database: PostgreSQ
 
 Authentication: Clerk
+
+<div align="center">
+  <img src="./public/screenshots/image_1.png" alt="Nomad Rider" width="800">
+  <p><i>The Nomad Rider Main Page</i></p>
+</div>
+
+<div align="center">
+  <img src="./public/screenshots/image_2.png" alt="Nomad Rider" width="800">
+  <p><i>The Nomad Rider Find Spots (All Spots with Search Filter) Page </i></p>
+</div>
+
+<div align="center">
+  <img src="./public/screenshots/image_3.png" alt="Nomad Rider" width="800">
+  <p><i>The Nomad Rider My Spots Page.</i> All the spots by the user and the option to delete them.</p>
+</div>
